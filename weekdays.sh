@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "testing the second version"
 echo " Today is "
 day=$(date '+%a')
 echo "$day"
