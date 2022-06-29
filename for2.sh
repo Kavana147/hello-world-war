@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "git add"
 #set counter 'c' to 1 and condition 
 # c is less than or equal to 5
 c=1

@@ -1,4 +1,5 @@
 #!/bin/bash
+Echo "class 2 git testing"
 echo "enter the file name"
 read filname
 total=`cat $filname | wc -l`
