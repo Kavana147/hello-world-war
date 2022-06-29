@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "testing for assignment on tag"
 echo "enter the file name"
 read name
 while read line

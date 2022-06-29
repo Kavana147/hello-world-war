@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "testing the git for assignment on tag"
 echo "enter the file name"
 read name
 echo "enter the line number to be displayed"
