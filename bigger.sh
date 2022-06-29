@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "testing new branch"
 echo " enter the first numner"
 read a
 echo "enter the second number"
