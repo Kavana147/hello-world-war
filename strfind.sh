@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "comparing rebase and merge"
 echo "enter the file name"
 read name 
 echo "enter the pattern to be found"
