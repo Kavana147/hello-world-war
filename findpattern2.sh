@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "comparing merge and rebase"
 echo "enter the pattern to search"
 read pattern
 grep -i -R -l $pattern * > output
