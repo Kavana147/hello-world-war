@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "comparing merge and rebase"
 dir=$(ls *.txt) 
 #count=1
 #new="new"
