@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "entering line24"
+echo "editing line 12"
 echo "enter the file name to be read in reverse"
 read arrayout
 tac $arrayout > revop
