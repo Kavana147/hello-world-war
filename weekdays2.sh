@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "comparing merge and rebase"
 echo " Enter the day"
 read day
 echo "$day"
