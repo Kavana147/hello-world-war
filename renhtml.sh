@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "comparing merge and rebase"
 cd change
 ls | grep -i "txt$" > output1
 while read line
