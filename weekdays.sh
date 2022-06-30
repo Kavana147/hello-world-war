@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "testing the second version"
+echo "comparing merge and rebase"
 echo " Today is "
 day=$(date '+%a')
 echo "$day"
