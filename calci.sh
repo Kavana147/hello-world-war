@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "this is calci1"
 a=$1
 b=$2
 echo " the values passed are $a and $b"
