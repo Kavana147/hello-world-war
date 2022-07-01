@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "testing cherry-pick"
 echo " enter the first numner"
 read a
 echo "enter the second number"
