@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "testing fetch"
+echo "testing fetch second time"
 echo " enter the first numner"
 read a
 echo "enter the second number"
