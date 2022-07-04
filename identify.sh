@@ -1,4 +1,5 @@
 #!/bin/bash
+ls
 echo " enter the string name"
 read a 
 if [ -L $a ]
