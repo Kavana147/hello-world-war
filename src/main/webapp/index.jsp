@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Hello DevOps</title>
+<title>Hello Jenkins Pipeline</title>
 </head>
 <body>
-	<h1>Hello DevOps!</h1>
+	<h1>Hello Jenkins Pipeline!</h1>
 	<h2>We are learning Deployment in CI/CD now</h2>
 	<h3>Execution Successful</h3>
 	<h3>Looking for more projects</h3>
