@@ -22,7 +22,7 @@ pipeline {
             }    
         }
         stage('deploy') {
-            
+            parallel {
                 stage('deploy server1') {
                     agent {
                         label "tomcatone"
@@ -49,6 +49,7 @@ pipeline {
                                 }
                         }
                  }
+            }
         }
     }
 }
