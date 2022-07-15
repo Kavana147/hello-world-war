@@ -21,8 +21,6 @@ pipeline {
                 }    
             }    
         }
-       
-           parallel {
                 stage('deploy server1') {
                     agent {
                         label "tomcatone"
@@ -52,7 +50,7 @@ pipeline {
                                 }
                             }
                         }
-                 }  
-            } 
+                 
+            
     }
 }
