@@ -1,28 +1,25 @@
 pipeline {
-    agent { label 'maven' }
+    agent none
     stages { 
-        stage('checkout') {
+        stage('checkout and build') {
+            agent {label 'maven'}
             steps {
                 sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/Kavana147/hello-world-war.git'
-            }
-         }
-        stage('build') {
-            steps {
-                dir('hello-world-war') {
+                  dir('hello-world-war') {
                     sh 'mvn package'
+                 }
+             }
+           }
+        stage('publish') {
+            agent {label 'maven'}
+            steps {
+                 dir('hello-world-war') {
+                    sh "echo ${BUILD_NUMBER}"
+                    sh 'cp -r target/hello-world-war-1.0.0.war hello-world-war-${BUILD_NUMBER}.war'
+                    sh 'curl -X PUT -u kavana:TheBoys@123 -T hello-world-war-${BUILD_NUMBER}.war \"http://34.223.234.12:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war\"'
                 }    
             }    
         }
-        stage('deploy') {
-            steps {
-                sh 'sudo cp -r  /home/jenslave/workspace/Pipelineexample/hello-world-war/target/hello-world-war-1.0.0.war /opt/apache-tomcat-9.0.64/webapps/'
-                sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
-                sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
-                sh 'echo "Successfully deployed"'
-            }
-        
-        }
     }
-    
 }
