@@ -4,7 +4,8 @@
 </head>
 <body>
 	<h1>Hello DevOps!</h1>
-	<h2>We are learning Deployment on 7-july</h2>
+	<h2>We are learning Deployment in CI/CD</h2>
+	<h3>Execution Successful</h3>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
