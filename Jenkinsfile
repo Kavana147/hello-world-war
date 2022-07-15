@@ -23,7 +23,7 @@ pipeline {
         }
         stage('deploy') {
            parallel {
-                stage('deploy server1') {
+                #stage('deploy server1') {
                     agent {
                         label "tomcatone"
                     }
@@ -35,10 +35,10 @@ pipeline {
                                         sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
                                         sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
                                 }
-                        }
-                   }
-                }
-                 stage('deploy server2') {
+                         }
+                    }
+                  #}
+                 #stage('deploy server2') {
                     agent {
                         label "tomcattwo"
                     }
@@ -52,7 +52,7 @@ pipeline {
                                 }
                             }
                         }
-                    }    
+                 #}  
             }
         } 
     }
