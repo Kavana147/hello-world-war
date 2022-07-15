@@ -21,5 +21,30 @@ pipeline {
                 }    
             }    
         }
+        stage('deploy') {
+           parallel {
+                stage('deploy server1') {
+                    agent {
+                        label "tomcatone"
+                    }
+                    steps {
+                        sh 'curl -u kavana:TheBoys@2541 -O http://34.223.234.12:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
+                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
+                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
+                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
+                   }
+                }
+                 stage('deploy server2') {
+                    agent {
+                        label "tomcattwo"
+                    }
+                    steps {
+                        sh 'curl -u kavana:TheBoys@2541 -O http://34.223.234.12:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
+                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
+                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
+                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
+                   }
+                }    
+             }
     }
 }
