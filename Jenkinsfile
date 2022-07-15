@@ -21,11 +21,12 @@ pipeline {
                 }    
             }    
         }
+        stage('deploy') {
+            
                 stage('deploy server1') {
                     agent {
                         label "tomcatone"
                     }
-                    script {
                         if(params.deploy_server1) {
                                 steps {
                                         sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
@@ -34,13 +35,11 @@ pipeline {
                                         sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
                                 }
                          }
-                    }
                   }
                  stage('deploy server2') {
                     agent {
                         label "tomcattwo"
                     }
-                     script {
                          if(params.deploy_server2) {
                                 steps {
                                         sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
@@ -48,7 +47,6 @@ pipeline {
                                         sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
                                         sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
                                 }
-                            }
                         }
                  }
     }
