@@ -21,7 +21,7 @@ pipeline {
                 }    
             }    
         }
-        stages('deploy') {
+        stages {
            parallel {
                 stage('deploy server1') {
                     agent {
