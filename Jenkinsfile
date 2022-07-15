@@ -21,9 +21,9 @@ pipeline {
                 }    
             }    
         }
-        stage('deploy') {
+        stages('deploy') {
            parallel {
-                #stage('deploy server1') {
+                stage('deploy server1') {
                     agent {
                         label "tomcatone"
                     }
@@ -37,8 +37,8 @@ pipeline {
                                 }
                          }
                     }
-                  #}
-                 #stage('deploy server2') {
+                  }
+                 stage('deploy server2') {
                     agent {
                         label "tomcattwo"
                     }
@@ -52,7 +52,7 @@ pipeline {
                                 }
                             }
                         }
-                 #}  
+                 }  
             }
         } 
     }
