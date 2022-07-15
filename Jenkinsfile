@@ -27,24 +27,32 @@ pipeline {
                     agent {
                         label "tomcatone"
                     }
-                    steps {
-                        sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
-                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
-                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
-                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
+                    script {
+                        if(params.deploy_server1) {
+                                steps {
+                                        sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
+                                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
+                                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
+                                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
+                                }
+                        }
                    }
                 }
                  stage('deploy server2') {
                     agent {
                         label "tomcattwo"
                     }
-                    steps {
-                        sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
-                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
-                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
-                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
-                   }
-                }    
+                     script {
+                         if(params.deploy_server2) {
+                                steps {
+                                        sh 'curl -u kavana:TheBoys@2541 -O http://54.149.204.163:8081/artifactory/newmaven/hello-world-war-${BUILD_NUMBER}.war'
+                                        sh 'sudo cp -r hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-9.0.64/webapps/'
+                                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/shutdown.sh'
+                                        sh 'sudo  sh /opt/apache-tomcat-9.0.64/bin/startup.sh'
+                                }
+                            }
+                        }
+                    }    
             }
         } 
     }
