@@ -1,7 +1,9 @@
 pipeline {
-    agent none
-    booleanParam(name: 'Deploy_Server1', defaultValue: true, description: 'Please select if you need to deploy to Tomcat Server1')
-    booleanParam(name: 'Deploy_Server2', defaultValue: true, description: 'Please select if you need to deploy to Tomcat Server 2')
+    parameters {
+                booleanParam(name: 'Deploy_Server1', defaultValue: true, description: 'Please select if you need to deploy to Tomcat Server1')
+                booleanParam(name: 'Deploy_Server2', defaultValue: true, description: 'Please select if you need to deploy to Tomcat Server 2')
+        }
+     agent none
     stages { 
         stage('checkout and build') {
             agent {label 'maven'}
