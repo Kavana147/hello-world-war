@@ -5,10 +5,17 @@ pipeline {
             steps {
                 sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/Kavana147/hello-world-war.git'
-                  dir('hello-world-war') {
-                    sh 'docker build -t tomimage . '
-                 }
-             }
+            }
+     }
+    
+    stage ('build') {
+      steps {
+        script {
+          dir('hello-world-war') {
+          dockerImage= docker.build tomimage
+          }
         }
+      }
     }
-  }
+   }
+ }
