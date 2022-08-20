@@ -1,5 +1,8 @@
 pipeline {
   agent { label 'docker-build'}
+  environment {
+    DOCKERHUB_CREDENTIALS=('kavana-docker')
+  }
   stages { 
     stage('checkout') {
       steps {
@@ -12,15 +15,15 @@ pipeline {
         script {
           dir('hello-world-war') {
               sh 'docker build -t tomimage:${BUILD_NUMBER} .'
-              sh 'docker tag tomimage:${BUILD_NUMBER} 076359103690.dkr.ecr.us-west-2.amazonaws.com/tomcat:${BUILD_NUMBER}'
+              sh 'docker tag tomimage:${BUILD_NUMBER} kavana147/tomcat:${BUILD_NUMBER}'
           }
         }
       }
     }
     stage ('publish') {
       steps {
-          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 076359103690.dkr.ecr.us-west-2.amazonaws.com'
-          sh 'docker push 076359103690.dkr.ecr.us-west-2.amazonaws.com/tomcat:${BUILD_NUMBER}'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-TheBoys@2541'
+          sh 'docker push kavana147/tomcat:${BUILD_NUMBER}'
       }
    }
     stage ('deploy') {
@@ -28,9 +31,9 @@ pipeline {
       steps {
           sh 'docker rm -f mytomcat'
           sh 'sleep 5'
-          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 076359103690.dkr.ecr.us-west-2.amazonaws.com'
-          sh 'docker pull 076359103690.dkr.ecr.us-west-2.amazonaws.com/tomcat:${BUILD_NUMBER}'
-          sh 'docker run -d --name mytomcat -p 8084:8080 076359103690.dkr.ecr.us-west-2.amazonaws.com/tomcat:${BUILD_NUMBER}'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-TheBoys@2541'
+          sh 'docker pull kavana147/tomcat:${BUILD_NUMBER}'
+          sh 'docker run -d --name mytomcat -p 8084:8080 kavana147/tomcat:${BUILD_NUMBER}'
       }
     }   
  }
