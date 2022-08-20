@@ -28,7 +28,7 @@ pipeline {
       steps {
           sh 'docker rm -f mytomcat'
           sh 'sleep 5'
-          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-TheBoys@2541'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u kavana147 --password-TheBoys@2541'
           sh 'docker pull kavana147/tomcat:${BUILD_NUMBER}'
           sh 'docker run -d --name mytomcat -p 8084:8080 kavana147/tomcat:${BUILD_NUMBER}'
       }
