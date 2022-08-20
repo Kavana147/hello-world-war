@@ -19,7 +19,7 @@ pipeline {
     }
     stage ('publish') {
       steps {
-          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u kavana147 --password-TheBoys@2541'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u kavana147 --password=TheBoys@2541'
           sh 'docker push kavana147/tomcat:${BUILD_NUMBER}'
       }
    }
