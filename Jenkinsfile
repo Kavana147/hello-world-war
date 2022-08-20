@@ -1,8 +1,5 @@
 pipeline {
   agent { label 'docker-build'}
-  environment {
-    DOCKERHUB_CREDENTIALS=('kavana-docker')
-  }
   stages { 
     stage('checkout') {
       steps {
@@ -22,7 +19,7 @@ pipeline {
     }
     stage ('publish') {
       steps {
-          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-TheBoys@2541'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u kavana147 --password-TheBoys@2541'
           sh 'docker push kavana147/tomcat:${BUILD_NUMBER}'
       }
    }
