@@ -3,7 +3,7 @@
 <title>Hello Jenkins Pipeline CICD today</title>
 </head>
 <body>
-	<h1>Hello Jenkins Pipeline CICD from Docker!</h1>
+	<h1>Pipeline CICD from Docker!</h1>
 	<h2>We are learning Deployment in CI/CD with Docker</h2>
 	<h3>Execution Successful</h3>
 	<h3>Looking for Projects in Pipeline</h3>
