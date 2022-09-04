@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.deploy_name }}
+  namespace; {{ .Values.namespace_tomcat }}
 spec:
   replicas: {{ .Values.replica_set }}
   strategy:
