@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tomcat_service }}
+spec:
+  selector: 
+    app: {{ .Values.match_label }}
+  ports: 
+    - name: {{ .Values.port_name }}
+      protocol: TCP
+      port: {{ .Values.port_num }}
+      targetPort: {{ .Values.target_port }}

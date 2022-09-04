@@ -1,0 +1,15 @@
+namespace_tomcat: tomcat
+deploy_name: tomcatdeploy
+replica_set: 3
+maxsurge: 1
+maxunavailable: 0
+match_label: tomcatwebserver
+temp_name: tomcatdep
+conatiner_name: tomcatcont
+docker_registry_name: 076359103690.dkr.ecr.us-west-2.amazonaws.com 
+docker_repo_name: tomcat
+tag_name: 
+tomcat_service: tomcatserv
+port_name: tomcatport
+port_num: 8080
+target_port: 8096
