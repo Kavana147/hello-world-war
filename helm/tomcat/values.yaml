@@ -11,5 +11,5 @@ docker_repo_name: tomcat
 tag_name: 
 tomcat_service: tomcatserv
 port_name: tomcatport
-port_num: 8080
-target_port: 8096
+port_num: 8096
+target_port: 8080
